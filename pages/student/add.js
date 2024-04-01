@@ -3,9 +3,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 const Login = () => {
+  
   const [file, setFile] = useState(null);
   const router = useRouter();
+  const token = sessionStorage.getItem('token');
 
+  if (!token) {
+    router.push('/');
+    return;
+  }
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     const formData = new FormData();
@@ -21,6 +27,11 @@ const Login = () => {
     }
 
     try {
+      const token = sessionStorage.getItem('token');
+      if (!token) {
+        router.push('/');
+        return;
+      }
       const response = await fetch('http://localhost/student-report-api/index.php/Student/add', {
         method: 'POST',
         body: file

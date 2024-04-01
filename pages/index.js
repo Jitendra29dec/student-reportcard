@@ -31,9 +31,12 @@ const Login = () => {
           },
         });
   
-        if (response.status === 200) {
+        if (response.status === 200 && response.data && response.data.token) {
           setSuccess('Login successful! Redirecting...');
           sessionStorage.setItem('token', response.data.token);
+          console.log('token',sessionStorage)
+          sessionStorage.setItem('user_id', response.data.user_id);
+          console.log('user_iss==>'.sessionStorage)
           router.push('/dashboard');
         } else {
           console.error('Error occurred:', response.status);

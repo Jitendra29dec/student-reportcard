@@ -16,10 +16,10 @@ const ImportRetail = () => {
       try {
         setLoading(true);
         const token = sessionStorage.getItem('token');
-        // if (!token) {
-        //   router.push('/');
-        //   return;
-        // }
+        if (!token) {
+          router.push('/');
+          return;
+        }
         const response = await axios.get(`/api/student`, {
           params: { currentPage, itemsPerPage, searchTerm },
           headers: {
@@ -143,7 +143,7 @@ const ImportRetail = () => {
                                       <td className="status">{item?.section}</td>
                                     <td className="action">
                                       {/* <a href=""><BiShow style={{ fontSize: '30px', color: 'rgb(53, 78, 111)' }} /></a> */}
-                                      <a href={`/student/${item.rc_id}`} style={{ textDecoration: 'none' }}> <BiShow style={{ fontSize: '30px', color: 'rgb(53, 78, 111)' }} /> </a>
+                                      <a href={`/student/${item?.rc_id}`} style={{ textDecoration: 'none' }}> <BiShow style={{ fontSize: '30px', color: 'rgb(53, 78, 111)' }} /> </a>
                                     </td>
                                   </tr>
                                 ))

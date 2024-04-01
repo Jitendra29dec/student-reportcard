@@ -3,9 +3,40 @@ import React, { useEffect, useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import team3 from 'assets/img/team/3.jpg';
 import Avatar from 'components/common/Avatar';
-
+import axios from 'axios';
+import { useRouter } from 'next/router';
 const ProfileDropdown = () => {
+  const router = useRouter();
   const [mount, setMount] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const handleLogout = async () => {
+    try {
+      const confirmed = window.confirm("Are you sure you want to logout?");
+      
+      if (confirmed) {
+        setLoading(true);
+        const token = sessionStorage.getItem('token');
+        const userId = sessionStorage.getItem('user_id');
+
+        const response = await axios.post('http://localhost/student-report-api/index.php/login/logout', { user_id: userId }, {
+          // headers: { Authorization: `Bearer ${token}` }
+        });
+        console.log('dsfsd==>',response.data.status);
+        if (response.status === 200) {
+          sessionStorage.clear();
+          router.push('/');  
+        } else {
+          console.error('Logout failed:', data.error);
+        }
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error('Error logging out:', error);
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     setMount(true);
@@ -38,7 +69,7 @@ const ProfileDropdown = () => {
           <Dropdown.Item href="#!">Feedback</Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item to="/user/settings">Settings</Dropdown.Item>
-          <Dropdown.Item to="/authentication/card/logout">Logout</Dropdown.Item>
+          <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
         </div>
       </Dropdown.Menu>
     </Dropdown>

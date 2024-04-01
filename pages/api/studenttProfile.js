@@ -9,7 +9,7 @@ export default async (req, res) => {
         // if (!token) {
         //     return res.status(401).json({ error: 'Unauthorized', message: 'Authorization header not found' });
         // }
-        const response = await axios.get(`http://localhost/student-report-api/index.php/Student/studenttProfile?student_id=1`, {
+        const response = await axios.get(`http://localhost/student-report-api/index.php/Student/studenttProfile?student_id=${student_id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
