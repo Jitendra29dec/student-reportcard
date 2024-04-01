@@ -1,0 +1,8 @@
+/node_modules
+/.github
+/.husky
+/.next
+/.vscode
+/assets
+/public
+/styles

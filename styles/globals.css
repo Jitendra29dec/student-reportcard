@@ -1,0 +1,41 @@
+a {
+  font-family: 'Poppins', sans-serif;
+}
+
+pre div span {
+  font-family: "SFMono-Regular",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
+.content {
+  padding-bottom: 0 !important;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.falcon-logo {
+  padding-left: 7px !important;
+}
+
+.in-progress-image-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.footer {
+  position: relative !important;
+}
+
+.hover-overlay {
+  height: 110px;
+}
+
+.settings-img-wrap span {
+  height: inherit !important;
+}
