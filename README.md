@@ -1,10 +1,10 @@
-# Falcon Next Starter
+# Student Reportcard
 
-This is a Falcon Next Starter.
+Its a web application developed in next js, where you can create student report card.
 
 Notable changes:
 
-- Version upgrade for @fortawesome/
-- Added d-flex class inside global.css
-- Update Style of Falcon Logo of Top Navbar
-- Change img tag to Image (from Next)
+- clone the code
+- npm install
+- npm run dev or npm run build on server
+- 
